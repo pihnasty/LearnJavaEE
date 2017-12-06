@@ -117,8 +117,8 @@ public class CalcServlet extends HttpServlet {
             out.println("<h3 style=\"color=red;\"> Имена параметров должны быть one,two,operation</h3>");
             out.println("<h3 style=\"color=red;\"> Значения one,twoдолжны быть числами</h3>");
             out.println("<h3 style=\"color=red;\"> Пример:     http://localhost:8080/CalcServlet2?one=2&two=4&operation=add</h3>");
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+//            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+//            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             try {
                 throw ex;
             } catch (Exception e) {
