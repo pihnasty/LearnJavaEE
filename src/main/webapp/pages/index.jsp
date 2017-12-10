@@ -22,7 +22,7 @@
 
             <div class="login_div">
                 <p class="title">Для входа введит свои данные:</p>
-                <form class="login_form" name="username" action="mainL022_031.jsp" method="POST">
+                <form class="login_form" name="username" action="main.jsp" method="POST">
                     Имя: <input type="text" name="username" value="" size="20" />
                     <input type="submit" value="Войти" />
                 </form>

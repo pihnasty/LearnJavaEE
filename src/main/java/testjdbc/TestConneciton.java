@@ -23,7 +23,7 @@ public class TestConneciton {
 
             ResultSet rs = stmt.executeQuery("SELECT * FROM library.book;");
             while (rs.next()) {
-                System.out.println(rs.getString("name"));
+                System.out.println("name="+rs.getString("name"));
             }
 
         } catch (SQLException ex) {

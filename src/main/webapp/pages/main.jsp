@@ -1,34 +1,60 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: pom
-  Date: 06.12.2017
-  Time: 8:14
-  To change this template use File | Settings | File Templates.
---%>
-<%@page import="testjdbc.TestConneciton" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="testjdbc.TestConneciton"%>
+<%@page import="beans.Author"%>
+<%@page import="beans.AuthorList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>main</title>
-</head>
-<body>
-    <% request.setCharacterEncoding("UTF-8");%>
-    <%="Привет   Cntr+U       Инструмент разработчика "%>
-    <%="         Cntr+Shift+C Инструмент разработчика"%>
-    <h3>
-        <%=request.getParameter("username")%>
-    </h3>
-    <h3>
-        <%=request.getParameter("password")%>
-    </h3>
-    <h3>
-        ${param["password"]}
-    </h3>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Онлайн библиотека</title>
+        <link href="css/style_main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
 
-        <%
-            TestConneciton tc = new TestConneciton();
-            tc.check();
-        %>
+    <div class="container">
 
-</body>
+
+        <div class="header">
+            <img alt="Место для логотипа" name="logo" width="100%" height="90"/>
+
+            <form class="search_form" name="search_form" method="POST">
+                <img src="../images/search.jpg"/>
+                <input type="text" name="search_String" value="" size="100" />
+                <input type="submit" value="Поиск" name="search_button" />
+                <select name="search_option">
+                    <option>Название</option>
+                    <option>Автор</option>
+                </select>
+            </form>
+        </div>
+
+
+
+
+        <div class="sidebar1">
+            <h4>Список авторов:</h4>
+            <ul class="nav">
+                <% AuthorList authorList = new AuthorList();
+                    for (Author author : authorList.getAuthorList()) {
+                %>
+                <li><a href="#"><%=author.getName()%></a></li>
+
+                <%}%>
+            </ul>
+            <p>&nbsp;</p>
+        </div>
+
+
+
+
+        <div class="content">
+            <h1>&nbsp;</h1>
+            <p>&nbsp;</p>
+        </div>
+
+
+
+    </div><!-- end .container -->
+
+    </body>
 </html>
