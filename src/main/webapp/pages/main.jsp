@@ -5,6 +5,7 @@
   Time: 8:14
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="testjdbc.TestConneciton" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,5 +24,11 @@
     <h3>
         ${param["password"]}
     </h3>
+
+        <%
+            TestConneciton tc = new TestConneciton();
+            tc.check();
+        %>
+
 </body>
 </html>

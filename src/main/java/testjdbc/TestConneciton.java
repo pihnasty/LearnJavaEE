@@ -16,10 +16,12 @@ public class TestConneciton {
 
         try {
             InitialContext ic = new InitialContext();
-            DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/Library");
+            DataSource ds = (DataSource) ic.lookup("jdbc/Library");   //java:comp/env/
             Connection conn = ds.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from book");
+            System.out.println("Hello!");
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM library.book;");
             while (rs.next()) {
                 System.out.println(rs.getString("name"));
             }
