@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import db.Database;
 
 public class BookList {
@@ -24,7 +23,7 @@ public class BookList {
             conn = Database.getConnection();
 
             stmt = conn.createStatement();
-            System.out.println(str);
+
             rs = stmt.executeQuery(str);
             while (rs.next()) {
                 Book book = new Book();
@@ -34,9 +33,9 @@ public class BookList {
                 book.setIsbn(rs.getString("isbn"));
                 book.setAuthor(rs.getString("author"));
                 book.setPageCount(rs.getInt("page_count"));
-                book.setPublishDate(rs.getDate("publish_year"));
+                book.setPublishDate(rs.getInt("publish_year"));
                 book.setPublisher(rs.getString("publisher"));
-                book.setImage(new ImageIcon(rs.getBytes("image")).getImage());
+                book.setImage(rs.getBytes("image"));
                 bookList.add(book);
             }
 

@@ -21,17 +21,22 @@
         <servlet-name>CheckOperationsServlet</servlet-name>
         <servlet-class>calculator.servlets.CheckOperationsServlet</servlet-class>
     </servlet>
-
-
+    <servlet>
+        <servlet-name>ShowImage</servlet-name>
+        <servlet-class>servlets.ShowImage</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>SecondServlet</servlet-name>
         <url-pattern>/SecondServlet2</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>CalcServlet</servlet-name>
         <url-pattern>/CalcServlet2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowImage</servlet-name>
+        <url-pattern>/ShowImage</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
