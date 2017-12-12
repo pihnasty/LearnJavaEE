@@ -12,10 +12,12 @@
         <module name="Lesson015_P021" />
         <module name="Lesson016_P023" />
         <module name="P_013_Lesson011" />
+        <module name="smartFactory" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="LearnJavaEE" target="1.5" />
+      <module name="smartFactory" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

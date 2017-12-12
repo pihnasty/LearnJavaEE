@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LearnJavaEE.iml" filepath="$PROJECT_DIR$/LearnJavaEE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smartFactory.iml" filepath="$PROJECT_DIR$/smartFactory.iml" />
     </modules>
   </component>
 </project>

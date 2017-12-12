@@ -9,26 +9,20 @@
 </head>
 
 <body>
-        <%request.setCharacterEncoding("UTF-8");%>
-<div id="hello">
+<%request.setCharacterEncoding("UTF-8");%>
 
-
-    <%="Привет,"%>
-    <%=request.getParameter("login")%>
-
+<div id="top">
+    <h1>Тех.процесс</h1>
 </div>
 <div id="logout">
     <form class="login_out" name="exit" action="index.jsp" >
         <input type="submit" value="Войти" />
     </form>
 </div>
-        <div id="top">
-            <h1>Главная</h1>
-        </div>
 <div id="Navigation">
     <ul class="Navigation">
         <li><a href="#" action="main.jsp">Главная</a></li>
-        <li><a href="technologicalProcess.jsp" >Тех.процесс</a></li>
+        <li><a href="technologicalProcess.jsp"  method="post">Тех.процесс</a></li>
         <li><a action="main.jsp">Монитор</a>
             <ul>
                 <li><a action="main.jsp">Web Development</a></li>

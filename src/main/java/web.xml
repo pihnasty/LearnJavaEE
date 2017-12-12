@@ -3,6 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+    <welcome-file-list>
+        <welcome-file>pages/main.jsp</welcome-file>
+    </welcome-file-list>
+
+
     <servlet>
         <servlet-name>SecondServlet</servlet-name>
         <servlet-class>servlets.SecondServlet</servlet-class>
@@ -16,12 +22,7 @@
         <servlet-class>calculator.servlets.CheckOperationsServlet</servlet-class>
     </servlet>
 
-    <resource-ref>
-        <res-ref-name>jdbc/smartFactory</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
+
 
     <servlet-mapping>
         <servlet-name>SecondServlet</servlet-name>
@@ -54,11 +55,32 @@
         </session-timeout>
     </session-config>
 
+    <!--<jsp-config>-->
+        <!--<jsp-property-group>-->
+            <!--<url-pattern>*.jsp</url-pattern>-->
+            <!--<page-encoding>UTF-8</page-encoding>-->
+        <!--</jsp-property-group>-->
+    <!--</jsp-config>-->
+
+    <resource-ref>
+        <res-ref-name>jdbc/Library</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
     <jsp-config>
         <jsp-property-group>
-            <url-pattern>*.jsp</url-pattern>
+            <display-name>header_and_footer</display-name>
+            <url-pattern>/pages/*</url-pattern>
             <page-encoding>UTF-8</page-encoding>
+            <include-prelude>/jspf/header.jspf</include-prelude>
+            <include-coda>/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
+
 
 </web-app>
