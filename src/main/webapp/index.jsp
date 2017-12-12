@@ -1,5 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%-----------%>
+<%--&lt;%&ndash;http://www.iztt.ru/proizvodstvo-i-tehnologii&ndash;%&gt;--%>
+<%---------%>
 
 <html>
 <head>
@@ -33,6 +36,7 @@
     Разработчик: Максим Пигнастый, 2017 г
 </div>
 
+</div>
 
 </body>
 </html>

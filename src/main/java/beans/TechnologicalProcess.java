@@ -9,7 +9,7 @@ public class TechnologicalProcess {
     private long performance;
     private String  equipment;
     private long sequence;
-    private Image image;
+    private byte [] image;
 
     public long getId() {
         return id;
@@ -49,11 +49,11 @@ public class TechnologicalProcess {
         this.sequence = sequence;
     }
 
-    public Image getImage() {
+    public byte [] getImage() {
         return image;
     }
 
-    public void setImage(Image picture) {
+    public void setImage(byte [] image) {
         this.image = image;
     }
 }

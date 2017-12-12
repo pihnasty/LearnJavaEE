@@ -1,5 +1,6 @@
-package beans;
+package services;
 
+import beans.Author;
 import db.Database;
 
 import java.sql.Connection;

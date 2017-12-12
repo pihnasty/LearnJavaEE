@@ -15,6 +15,10 @@
         <servlet-name>CheckOperationsServlet</servlet-name>
         <servlet-class>calculator.servlets.CheckOperationsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowImage</servlet-name>
+        <servlet-class>servlets.ShowImage</servlet-class>
+    </servlet>
 
     <resource-ref>
         <res-ref-name>jdbc/smartFactory</res-ref-name>
@@ -47,6 +51,10 @@
         <error-code>400</error-code>
         <location>/errors/400.html</location>
     </error-page>
+    <servlet-mapping>
+        <servlet-name>ShowImage</servlet-name>
+        <url-pattern>/ShowImage</url-pattern>
+    </servlet-mapping>
 
     <session-config>
         <session-timeout>
@@ -56,9 +64,13 @@
 
     <jsp-config>
         <jsp-property-group>
-            <url-pattern>*.jsp</url-pattern>
+            <display-name>header_and_footer</display-name>
+            <url-pattern>/pages/*</url-pattern>
             <page-encoding>UTF-8</page-encoding>
+            <include-prelude>/jspf/header.jspf</include-prelude>
+            <include-coda>/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
+
 
 </web-app>

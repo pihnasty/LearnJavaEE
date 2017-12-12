@@ -36,7 +36,7 @@ public class MyServlet extends HttpServlet {
                             "<tr>" +
                             "<td colspan=\"2\" align=\"center\"> <strong> <font color=\"FF0000\" size=\"5\"> Секретный документ </font> </strong> </td>" +
                             "</tr>" +
-                            "<td width=\"150\" rowspan=\"2\"><img src=\"images/java.png\" alt=\"\"  width=\"119\" height=\"222\" ></td>" +
+                            "<td width=\"150\" rowspan=\"2\"><img src=\"images/java.png\" alt=\"\"  width=\"119\" height=\"222\" >   </td>" +
                             "<td width=\"340\"  height=\"99\" ><table width=\"300\" border=\"1\" align=\"left\"  cellpadding =\"15\"  cellspacing=\"0\">" +
                             "<tr>" +
                             "<th align=\"left\"> <font color=\"006699\"    <strong> Имя    </strong>      </font> </th>" +

@@ -1,5 +1,6 @@
-package beans;
+package services;
 
+        import beans.TechnologicalProcess;
         import db.Database;
 
         import javax.swing.*;
@@ -15,7 +16,7 @@ public class TechnologicalProcessList {
 
     private ArrayList<TechnologicalProcess> technologicalProcessList = new ArrayList<TechnologicalProcess>();
 
-    private ArrayList<TechnologicalProcess> getTechnologicalProceses(String str) {
+    private ArrayList<TechnologicalProcess> getTechnologicalProceses (String str) {
 
         Statement stmt = null;
         ResultSet rs = null;
@@ -34,7 +35,7 @@ public class TechnologicalProcessList {
                 technologicalProcess.setPerformance(rs.getInt("performance"));
                 technologicalProcess.setEquipment(rs.getString("equipment"));
                 technologicalProcess.setSequence(rs.getInt("sequence"));
-                technologicalProcess.setImage(new ImageIcon(rs.getBytes("image")).getImage());
+                technologicalProcess.setImage(rs.getBytes("image"));
                 technologicalProcessList.add(technologicalProcess);
             }
 
@@ -66,6 +67,8 @@ public class TechnologicalProcessList {
             return getTechnologicalProceses("select * from smartFactory.technologicalprocess");
         }
     }
+
+
 
     public ArrayList<TechnologicalProcess> getTechnologicalProcessByNameOperation(long id) {
         return getTechnologicalProceses("select * from smartFactory.technologicalprocess where="+id);

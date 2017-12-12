@@ -1,0 +1,17 @@
+    <%@ page import="beans.TechnologicalProcess" %>
+    <%@ page pageEncoding="UTF-8" %>
+<div class="sidebar1">
+
+
+    <%--<h4>Технологические процессы:</h4>--%>
+    <%--<ul class="nav">--%>
+        <%--<jsp:useBean id="technologicalProcessList" class="beans.TechnologicalProcessList" scope="application"/>--%>
+        <%--<%--%>
+            <%--Integer numberTechnologicalOperation = 0;--%>
+            <%--for (TechnologicalProcess technologicalProcess : technologicalProcessList.getAllTechnologicalProcess()) {--%>
+        <%--%>--%>
+        <%--<li><a href="books.jsp?genre_id=<%=technologicalProcess.getId()%>&name=<%=technologicalProcess.getNameOperation()%>"><%=technologicalProcess.getNameOperation()%></a></li>--%>
+
+        <%--<%}%>--%>
+    <%--</ul>--%>
+</div>

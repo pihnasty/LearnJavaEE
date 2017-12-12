@@ -1,41 +1,102 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="services.SmartProjectConstant" %>
+<%@ page import="java.util.ArrayList" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Онлайн SmartFactory::Вход</title>
-    <link href="../css/main.css" rel="stylesheet" type="text/css">
-</head>
+<%@include file="../jspf/middle.jspf" %>
 
-<body>
-<%request.setCharacterEncoding("UTF-8");%>
+<%
+    request.setCharacterEncoding("UTF-8");
 
-<div id="top">
-    <h1>Тех.процесс</h1>
-</div>
-<div id="logout">
-    <form class="login_out" name="exit" action="index.jsp" >
-        <input type="submit" value="Войти" />
-    </form>
-</div>
-<div id="Navigation">
-    <ul class="Navigation">
-        <li><a href="#" action="main.jsp">Главная</a></li>
-        <li><a href="technologicalProcess.jsp"  method="post">Тех.процесс</a></li>
-        <li><a action="main.jsp">Монитор</a>
-            <ul>
-                <li><a action="main.jsp">Web Development</a></li>
-                <li><a action="main.jsp">Motion Graphics</a></li>
-                <li><a action="main.jsp">Flash Animation</a></li>
-                <li><a action="main.jsp">Logo Design</a></li>
-                <li><a action="main.jsp">Photography</a></li>
-            </ul>
-        </li>
-        <li><a action="main.jsp">Управление заказами</a></li>
-        <li><a action="main.jsp">Помощь</a></li>
-    </ul>
-</div>
 
-</body>
-</html>
+%>
+
+<jsp:useBean id="technologicalProcessList" class="services.TechnologicalProcessList" scope="page"/>
+
+<table border="1">
+    <caption>Технологический процесс №1: Список технологических операций</caption>
+    <tr>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.NUMBER.getDescription() %>
+        </th>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.NAME_OPERATION.getDescription() %>
+        </th>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.PERFORMANCE.getDescription() %>
+        </th>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.EQUIPMENT.getDescription() %>
+        </th>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.SEQUENCE.getDescription() %>
+        </th>
+        <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.IMAGE.getDescription() %>
+        </th>
+    </tr>
+
+
+    <div>
+        <h3>${param.name}</h3>
+        <%
+
+       //     ArrayList<Book> list = bookList.getBooksByGenre(genreId);
+       //     session.setAttribute("currentBookList", list);
+
+            Integer numberRow = 1;
+
+            ArrayList<TechnologicalProcess> list = technologicalProcessList.getAllTechnologicalProcess();
+            session.setAttribute("currentList", list);
+
+            for (TechnologicalProcess technologicalProcess : list) {
+
+        %>
+        <tr>
+            <td><%=numberRow++ %>
+            </td>
+            <td><%=technologicalProcess.getNameOperation() %>
+            </td>
+            <td><%=technologicalProcess.getPerformance() %>
+            </td>
+            <td><%=technologicalProcess.getEquipment() %>
+            </td>
+            <td><%=technologicalProcess.getSequence() %>
+            </td>
+            <td>
+                <%--<img src=<%=technologicalProcess.getImage() %>>--%>
+
+
+                <img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(technologicalProcess) %>" height="80"  alt="Обложка"/>
+
+            </td>
+        </tr>
+        <%
+
+
+            }
+
+
+        %>
+
+        <%--<table cellpadding="30" style="font-size: 12px;">--%>
+
+        <%--<%--%>
+
+        <%--for (Book book : bookList.getBooksByGenre(genreId)) {--%>
+
+        <%--%>--%>
+        <%--<tr>--%>
+        <%--<td style="width:400px;height: 100px;">--%>
+        <%--<p style="color:#378de5 ;font-weight: bold; font-size: 15px;"> </p>--%>
+        <%--<br><strong>ISBN:</strong> <%=book.getIsbn()%>--%>
+        <%--<br><strong>Издательство:</strong> <%=book.getPublisher() %>--%>
+
+        <%--<br><strong>Количество страниц:</strong> <%=book.getPageCount() %>--%>
+        <%--<br><strong>Год издания:</strong> <%=book.getPublishDate() %>--%>
+        <%--<br><strong>Автор:</strong> <%=book.getAuthor() %>--%>
+        <%--<p style="margin:10px;"> <a href="#">Читать</a></p>--%>
+        <%--</td>--%>
+        <%--<td style="width:150px;height: 100px;">--%>
+        <%--картинка--%>
+        <%--</td>--%>
+        <%--</tr>--%>
+        <%--<%}%>--%>
+
+
+        <%--</table>--%>
+    </div>
