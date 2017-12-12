@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="P_013_Lesson013_P018:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="P_013_Lesson013_P018-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="P_013_Lesson011:war exploded" />
-    </root>
-  </artifact>
-</component>
