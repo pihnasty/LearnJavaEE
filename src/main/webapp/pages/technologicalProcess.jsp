@@ -13,7 +13,12 @@
 
 <jsp:useBean id="technologicalProcessList" class="services.TechnologicalProcessList" scope="page"/>
 
+
+
 <table border="1">
+    <br></br>
+<br></br>
+
     <caption>Технологический процесс №1: Список технологических операций</caption>
     <tr>
         <th><%=SmartProjectConstant.ColumnNameTechnologicalProcess.NUMBER.getDescription() %>
@@ -59,6 +64,7 @@
             </td>
             <td>
                 <%--<img src=<%=technologicalProcess.getImage() %>>--%>
+
 
 
                 <img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(technologicalProcess) %>" height="80"  alt="Обложка"/>

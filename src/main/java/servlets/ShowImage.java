@@ -4,7 +4,7 @@
  */
 package servlets;
 
-import beans.Book;
+
 import beans.TechnologicalProcess;
 
 import java.io.IOException;
@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- *
- * @author Tim
+
  */
 public class ShowImage extends HttpServlet {
 
@@ -27,36 +26,37 @@ public class ShowImage extends HttpServlet {
      * <code>GET</code> and
      * <code>POST</code> methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("image/jpeg");  
-        OutputStream out = response.getOutputStream();  
+        response.setContentType("image/jpeg");
+        OutputStream out = response.getOutputStream();
         try {
             int index = Integer.valueOf(request.getParameter("index"));
 
-            ArrayList<TechnologicalProcess> list = (ArrayList<TechnologicalProcess>)request.getSession(false).getAttribute("currentList");
+            ArrayList<TechnologicalProcess> list = (ArrayList<TechnologicalProcess>) request.getSession(false).getAttribute("currentList");
             TechnologicalProcess technologicalProcess = list.get(index);
             response.setContentLength(technologicalProcess.getImage().length);
             out.write(technologicalProcess.getImage());
-        } finally {            
+        } finally {
             out.close();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP
      * <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -68,10 +68,10 @@ public class ShowImage extends HttpServlet {
      * Handles the HTTP
      * <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
