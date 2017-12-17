@@ -34,20 +34,22 @@
                 list = bookList.getBooksBySearch(searchStr, type);
             }
         }
+
     %>
-    <h5 style="text-align: left; margin-top:20px;">Найдено книг: <%=list.size() %> </h5>
-    <%
-        session.setAttribute("currentBookList", list);
+    <h5 style="text-align: left; margin-top:20px;">Найдено книг: <%=list.size()%> </h5>
+    <%  session.setAttribute("currentBookList", list);
         for (Book book : list) {
 
     %>
 
     <div class="book_info">
         <div class="book_title">
-            <p> <%=book.getName()%></p>
+            <p> <a href="<%=request.getContextPath()%>/PdfContentServlet?index=<%=list.indexOf(book)%>"><%=book.getName()%></a>
+
+            </p>
         </div>
         <div class="book_image">
-            <a href="#"><img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(book)%>" height="250" width="190" alt="Обложка"/></a>
+            <a href="content.jsp?index=<%=list.indexOf(book)%>"><img src="<%=request.getContextPath()%>/ShowImage?index=<%=list.indexOf(book)%>" height="250" width="190" alt="Обложка"/></a>
         </div>
         <div class="book_details">
             <br><strong>ISBN:</strong> <%=book.getIsbn()%>
@@ -56,7 +58,9 @@
             <br><strong>Количество страниц:</strong> <%=book.getPageCount()%>
             <br><strong>Год издания:</strong> <%=book.getPublishDate()%>
             <br><strong>Автор:</strong> <%=book.getAuthor()%>
-            <p style="margin:10px;"> <a href="#">Читать</a></p>
+            <p style="margin:10px;">
+                <a href="<%=request.getContextPath()%>/PdfContentServlet?index=<%=list.indexOf(book)%>">Читать</a>
+            </p>
         </div>
     </div>
 
@@ -64,5 +68,5 @@
     <%}%>
 
 
-
+    <%--list.indexOf(book)--%>
 </div>

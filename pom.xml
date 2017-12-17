@@ -38,7 +38,16 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.sun.pdfview/pdfrenderer -->
+        <!--<dependency>-->
+            <!--<groupId>com.sun.pdfview</groupId>-->
+            <!--<artifactId>pdfrenderer</artifactId>-->
+            <!--<version>0.9.1-patched</version>-->
+        <!--</dependency>-->
+
+
     </dependencies>
+
 
 
     <build>
@@ -47,8 +56,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
 

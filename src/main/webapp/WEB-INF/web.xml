@@ -8,6 +8,14 @@
         <welcome-file>pages/main.jsp</welcome-file>
     </welcome-file-list>
 
+    <listener>
+        <description>HttpSessionListener</description>
+        <listener-class>listeners.SessionListener</listener-class>
+    </listener>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>listeners.ContextListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>SecondServlet</servlet-name>
@@ -25,7 +33,15 @@
         <servlet-name>ShowImage</servlet-name>
         <servlet-class>servlets.ShowImage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PdfContentServlet</servlet-name>
+        <servlet-class>servlets.PdfContent</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>PdfContentServlet</servlet-name>
+        <url-pattern>/PdfContentServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SecondServlet</servlet-name>
         <url-pattern>/SecondServlet2</url-pattern>

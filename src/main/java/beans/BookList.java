@@ -1,6 +1,8 @@
 package beans;
 
-import java.awt.Image;
+import db.Database;
+import enums.SearchType;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,8 +11,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import db.Database;
-import enums.SearchType;
 
 public class BookList {
 
@@ -58,9 +58,10 @@ public class BookList {
 //                Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, ex);
 //            }
         }
-        System.out.println(bookList);
+
         return bookList;
     }
+
 
     public ArrayList<Book> getAllBooks() {
         return getBooks("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, "
