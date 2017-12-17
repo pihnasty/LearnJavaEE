@@ -22,6 +22,7 @@
             list = bookList.getBooksByGenre(genreId);
         } else if (request.getParameter("letter") != null) {
             String letter = request.getParameter("letter");
+            session.setAttribute("letter", letter);
             list = bookList.getBooksByLetter(letter);
         } else if (request.getParameter("search_string") != null) {
             String searchStr = request.getParameter("search_string");
@@ -33,6 +34,10 @@
             if (searchStr != null && !searchStr.trim().equals("")) {
                 list = bookList.getBooksBySearch(searchStr, type);
             }
+        } else if (session.getAttribute("currentBookList") != null) {
+            list = (ArrayList<Book>) session.getAttribute("currentBookList");
+        }else{
+            list = bookList.getAllBooks();
         }
 
     %>
@@ -59,7 +64,7 @@
             <br><strong>Год издания:</strong> <%=book.getPublishDate()%>
             <br><strong>Автор:</strong> <%=book.getAuthor()%>
             <p style="margin:10px;">
-                <a href="<%=request.getContextPath()%>/PdfContentServlet?index=<%=list.indexOf(book)%>">Читать</a>
+                <a href="<%=request.getContextPath()%>/PdfContentServlet?index=<%=list.indexOf(book)%>&session_id=<%=session.getId()%>">Читать</a>
             </p>
         </div>
     </div>
@@ -68,5 +73,5 @@
     <%}%>
 
 
-    <%--list.indexOf(book)--%>
+
 </div>

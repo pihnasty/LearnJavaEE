@@ -7,7 +7,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-
+    <div style="margin:30px;">
+        <a href="books.jsp"><< вернуться</a>
+    </div>
         <div class="pdf_viewer">
             <%--<a href="<%=request.getContextPath()%>/PdfContent?index=<%=list.indexOf(book)%>"> --%>
         </div>

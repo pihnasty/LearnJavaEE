@@ -33,8 +33,8 @@ public class ShowImage extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("image/jpeg");  
-        OutputStream out = response.getOutputStream();  
+        response.setContentType("image/jpeg");
+        OutputStream out = response.getOutputStream();
         try {
             int index = Integer.valueOf(request.getParameter("index"));
 
@@ -42,7 +42,9 @@ public class ShowImage extends HttpServlet {
             Book book = list.get(index);
             response.setContentLength(book.getImage().length);
             out.write(book.getImage());
-        } finally {            
+        }catch (Exception ex){
+            ex.printStackTrace();
+        } finally {
             out.close();
         }
     }
