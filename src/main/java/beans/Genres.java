@@ -1,5 +1,6 @@
 package beans;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,9 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 import db.Database;
 
-public class GenreList {
+@ManagedBean
+@ApplicationScoped
+public class Genres implements Serializable{
 
     private ArrayList<Genre> genreList = new ArrayList<Genre>();
 
@@ -30,21 +35,21 @@ public class GenreList {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Genres.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-//            try {
-//                if (stmt != null) {
-//                    stmt.close();
-//                }
-//                if (rs != null) {
-//                    rs.close();
-//                }
-//                if (conn != null) {
-//                    conn.close();
-//                }
-//            } catch (SQLException ex) {
-//                Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Genres.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return genreList;

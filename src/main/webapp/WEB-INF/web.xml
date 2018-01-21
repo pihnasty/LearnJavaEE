@@ -3,35 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-
-    <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>/errors/404.html</location>-->
-    <!--</error-page>-->
-    <!--<error-page>-->
-        <!--<error-code>400</error-code>-->
-        <!--<location>/errors/400.html</location>-->
-    <!--</error-page>-->
-
-    <!--<session-config>-->
-        <!--<session-timeout>-->
-            <!--30-->
-        <!--</session-timeout>-->
-    <!--</session-config>-->
-
-    <resource-ref>
-        <res-ref-name>jdbc/Library</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
-
-
-    <!-- for Facelets  -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -42,8 +18,32 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+
+    <!--<error-page>-->
+    <!--<error-code>404</error-code>-->
+    <!--<location>/errors/404.html</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+    <!--<error-code>400</error-code>-->
+    <!--<location>/errors/400.html</location>-->
+    <!--</error-page>-->
+
+
+
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+
+    <resource-ref>
+        <res-ref-name>jdbc/Library</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 
 </web-app>

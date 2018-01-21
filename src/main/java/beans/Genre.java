@@ -1,7 +1,7 @@
 package beans;
 
-public class Genre {
-    
+public class Genre{
+
     private String name;
     private long id;
 
@@ -21,8 +21,6 @@ public class Genre {
         this.id = id;
     }
 
-    
-
     public String getName() {
         return name;
     }
@@ -30,7 +28,7 @@ public class Genre {
     public void setName(String name) {
         this.name = name;
     }
-    
-    
+
+
 
 }

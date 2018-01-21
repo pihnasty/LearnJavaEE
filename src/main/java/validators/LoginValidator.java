@@ -20,9 +20,9 @@ public class LoginValidator implements Validator {
 
 
         try {
-            String newValue //= value.toString();
+            String newValue = value.toString();
 
-                    = new String (value.toString().getBytes(),"UTF-8");
+                    // = new String (value.toString().getBytes(),"UTF-8");
 
        //     value = newValue;
 
@@ -42,8 +42,6 @@ public class LoginValidator implements Validator {
             FacesMessage message = new FacesMessage(e.getMessage());
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         }
     }
 
