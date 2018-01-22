@@ -65,28 +65,30 @@ public class SearchController implements Serializable {
 
         } catch (SQLException ex) {
             Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
+
+//        finally {
+//            try {
+//                if (stmt != null) {
+//                    stmt.close();
+//                }
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
 
     }
 
     private void fillBooksAll() {
         fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, b.descr, "
-                + "a.fio as author, g.name as genre, b.image from book b inner join author a on b.author_id=a.id "
-                + "inner join genre g on b.genre_id=g.id inner join publisher p on b.publisher_id=p.id order by b.name");
+                + "a.fio as author, g.name as genre, b.image from library.book b inner join library.author a on b.author_id=a.id "
+                + "inner join library.genre g on b.genre_id=g.id inner join library.publisher p on b.publisher_id=p.id order by b.name");
     }
 
     public void fillBooksByGenre() {
@@ -94,10 +96,10 @@ public class SearchController implements Serializable {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer genre_id = Integer.valueOf(params.get("genre_id"));
 
-          fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from book b "
-                + "inner join author a on b.author_id=a.id "
-                + "inner join genre g on b.genre_id=g.id "
-                + "inner join publisher p on b.publisher_id=p.id "
+          fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from library.book b "
+                + "inner join library.author a on b.author_id=a.id "
+                + "inner join library.genre g on b.genre_id=g.id "
+                + "inner join library.publisher p on b.publisher_id=p.id "
                 + "where genre_id=" + genre_id + " order by b.name ");
     }
 
@@ -114,7 +116,7 @@ public class SearchController implements Serializable {
             conn = Database.getConnection();
             stmt = conn.createStatement();
 
-            rs = stmt.executeQuery("select image from book where id=" + id);
+            rs = stmt.executeQuery("select image from library.book where id=" + id);
             while (rs.next()) {
                 image = rs.getBytes("image");
             }
@@ -122,22 +124,23 @@ public class SearchController implements Serializable {
         } catch (SQLException ex) {
             Logger.getLogger(Book.class
                     .getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Book.class
-                        .getName()).log(Level.SEVERE, null, ex);
-            }
         }
+//        finally {
+//            try {
+//                if (stmt != null) {
+//                    stmt.close();
+//                }
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Book.class
+//                        .getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
 
         return image;
     }
