@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 public class User implements Serializable{
 
     private String username;
-
+    
     public User() {
     }
 
@@ -20,5 +20,5 @@ public class User implements Serializable{
     public void setUsername(String username) {
         this.username = username;
     }
-
+    
 }

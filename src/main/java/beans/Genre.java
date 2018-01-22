@@ -1,7 +1,10 @@
 package beans;
 
-public class Genre{
+import java.io.Serializable;
 
+
+public class Genre implements Serializable{
+    
     private String name;
     private long id;
 
@@ -28,7 +31,7 @@ public class Genre{
     public void setName(String name) {
         this.name = name;
     }
-
-
+    
+    
 
 }
