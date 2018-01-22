@@ -23,6 +23,7 @@ import enums.SearchType;
 public class SearchController implements Serializable {
 
     private SearchType searchType;// хранит выбранный тип поиска
+    private String searchString; // хранит поисковую строку
     private static Map<String, SearchType> searchList = new HashMap<String, SearchType>(); // хранит все виды поисков (по автору, по названию)
     private ArrayList<Book> currentBookList; // текущий список книг для отображения
 
@@ -58,7 +59,8 @@ public class SearchController implements Serializable {
                 book.setPageCount(rs.getInt("page_count"));
                 book.setPublishDate(rs.getInt("publish_year"));
                 book.setPublisher(rs.getString("publisher"));
-//                book.setImage(rs.getBytes("image"));
+//              book.setImage(rs.getBytes("image"));
+//              book.setContent(rs.getBytes("content"));
                 book.setDescr(rs.getString("descr"));
                 currentBookList.add(book);
             }
@@ -103,7 +105,84 @@ public class SearchController implements Serializable {
                 + "where genre_id=" + genre_id + " order by b.name ");
     }
 
-  
+    public void fillBooksByLetter() {
+
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        String searchLetter = params.get("letter");
+
+        fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from library.book b "
+                + "inner join library.author a on b.author_id=a.id "
+                + "inner join library.genre g on b.genre_id=g.id "
+                + "inner join library.publisher p on b.publisher_id=p.id "
+                + "where substr(b.name,1,1)='" + searchLetter + "' order by b.name ");
+
+    }
+
+    public void fillBooksBySearch() {
+
+        if (searchString.trim().length() == 0) {
+            fillBooksAll();
+            return;
+        }
+
+        StringBuilder sql = new StringBuilder("select b.descr, b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.image from library.book b "
+                + "inner join library.author a on b.author_id=a.id "
+                + "inner join library.genre g on b.genre_id=g.id "
+                + "inner join library.publisher p on b.publisher_id=p.id ");
+
+        if (searchType == SearchType.AUTHOR) {
+            sql.append("where lower(a.fio) like '%" + searchString.toLowerCase() + "%' order by b.name ");
+
+        } else if (searchType == SearchType.TITLE) {
+            sql.append("where lower(b.name) like '%" + searchString.toLowerCase() + "%' order by b.name ");
+        }
+
+
+
+        fillBooksBySQL(sql.toString());
+
+
+    }
+
+    public byte[] getContent(int id) {
+        Statement stmt = null;
+        ResultSet rs = null;
+        Connection conn = null;
+
+
+        byte[] content = null;
+        try {
+            conn = Database.getConnection();
+            stmt = conn.createStatement();
+
+            rs = stmt.executeQuery("select content from library.book where id=" + id);
+            while (rs.next()) {
+                content = rs.getBytes("content");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Book.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+//        finally {
+//            try {
+//                if (stmt != null) {
+//                    stmt.close();
+//                }
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//                if (conn != null) {
+//                    conn.close();
+//                }
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Book.class
+//                        .getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+
+        return content;
+
+    }
 
     public byte[] getImage(int id) {
         Statement stmt = null;
@@ -184,6 +263,13 @@ public class SearchController implements Serializable {
         return letters;
     }
 
+    public String getSearchString() {
+        return searchString;
+    }
+
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
+    }
 
     public SearchType getSearchType() {
         return searchType;
