@@ -2,9 +2,8 @@ package beans;
 
 import java.io.Serializable;
 
+public class Genre implements Serializable {
 
-public class Genre implements Serializable{
-    
     private String name;
     private long id;
 
@@ -31,7 +30,4 @@ public class Genre implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-
 }

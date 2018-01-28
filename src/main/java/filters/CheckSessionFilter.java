@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package filters;
+package ru.javabegin.training.web.filters;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -26,8 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName= "CheckSessionFilter", 
-urlPatterns= "/pages/*")
+@WebFilter(filterName= "CheckSessionFilter",
+        urlPatterns= "/pages/*")
 public class CheckSessionFilter implements Filter {
 
     private static final boolean debug = false;
@@ -133,7 +133,7 @@ public class CheckSessionFilter implements Filter {
      * @exception ServletException if a servlet error occurs
      */
     public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain)
+                         FilterChain chain)
             throws IOException, ServletException {
 
         if (debug) {
@@ -156,7 +156,7 @@ public class CheckSessionFilter implements Filter {
         Throwable problem = null;
 
         HttpSession session = wrappedRequest.getSession(false);
-        if (session == null || session.isNew()){                
+        if (session == null || session.isNew()){
             wrappedResponse.sendRedirect(wrappedRequest.getContextPath() + "/index.xhtml");
         } else {
             chain.doFilter(wrappedRequest, wrappedResponse);

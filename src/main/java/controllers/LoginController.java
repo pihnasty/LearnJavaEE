@@ -15,9 +15,8 @@ public class LoginController {
         return "books";
     }
 
-    public String exit(){
+    public String exit() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "exit";
     }
-
 }

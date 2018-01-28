@@ -11,14 +11,3 @@
     <parameter-encoding default-charset="UTF-8" />
 
 </glassfish-web-app>
-
-
-
- 	<!--
-
- 	glassfish-web-app
-
- 	Oracle GlassFish Server 3.1 Application Deployment Guide
- 	https://docs.oracle.com/cd/E18930_01/html/821-2417/beaql.html
-
- 	-->

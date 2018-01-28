@@ -103,7 +103,4 @@ public class Book implements Serializable {
     public void setDescr(String descr) {
         this.descr = descr;
     }
-
-    
-    
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import controllers.SearchController;
 
 @WebServlet(name = "PdfContent",
-urlPatterns = {"/PdfContent"})
+        urlPatterns = {"/PdfContent"})
 public class PdfContent extends HttpServlet {
 
     /**

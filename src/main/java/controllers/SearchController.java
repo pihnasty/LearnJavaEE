@@ -41,6 +41,7 @@ public class SearchController implements Serializable {
         ResourceBundle bundle = ResourceBundle.getBundle("nls.messages", FacesContext.getCurrentInstance().getViewRoot().getLocale());
         searchList.put(bundle.getString("author_name"), SearchType.AUTHOR);
         searchList.put(bundle.getString("book_name"), SearchType.TITLE);
+
     }
 
     private void fillBooksBySQL(String sql) {
@@ -57,7 +58,6 @@ public class SearchController implements Serializable {
             conn = Database.getConnection();
             stmt = conn.createStatement();
 
-            System.out.println(requestFromPager);
             if (!requestFromPager) {
 
                 rs = stmt.executeQuery(sqlBuilder.toString());
@@ -132,11 +132,15 @@ public class SearchController implements Serializable {
 
     public String fillBooksByGenre() {
 
+        imitateLoading();
+
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 
-        submitValues(' ', 1, Integer.valueOf(params.get("genre_id")), false);
+        selectedGenreId = Integer.valueOf(params.get("genre_id"));
 
-        fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from library.book b "
+        submitValues(' ', 1, selectedGenreId, false);
+
+        fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from book b "
                 + "inner join library.author a on b.author_id=a.id "
                 + "inner join library.genre g on b.genre_id=g.id "
                 + "inner join library.publisher p on b.publisher_id=p.id "
@@ -149,22 +153,26 @@ public class SearchController implements Serializable {
 
     public String fillBooksByLetter() {
 
+        imitateLoading();
+
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedLetter = params.get("letter").charAt(0);
 
         submitValues(selectedLetter, 1, -1, false);
 
 
-        fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from library.book b "
-                + "inner join library.author a on b.author_id=a.id "
-                + "inner join library.genre g on b.genre_id=g.id "
-                + "inner join library.publisher p on b.publisher_id=p.id "
+        fillBooksBySQL("select b.id,b.name,b.isbn,b.page_count,b.publish_year, p.name as publisher, a.fio as author, g.name as genre, b.descr, b.image from book b "
+                + "inner join author a on b.author_id=a.id "
+                + "inner join genre g on b.genre_id=g.id "
+                + "inner join publisher p on b.publisher_id=p.id "
                 + "where substr(b.name,1,1)='" + selectedLetter + "' order by b.name ");
 
         return "books";
     }
 
     public String fillBooksBySearch() {
+
+        imitateLoading();
 
         submitValues(' ', 1, -1, false);
 
@@ -194,6 +202,7 @@ public class SearchController implements Serializable {
     }
 
     public void selectPage() {
+        imitateLoading();
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedPageNumber = Integer.valueOf(params.get("page_number"));
         requestFromPager = true;
@@ -400,5 +409,13 @@ public class SearchController implements Serializable {
 
     public long getSelectedPageNumber() {
         return selectedPageNumber;
+    }
+
+    private void imitateLoading() {
+        try {
+            Thread.sleep(1000);// имитация загрузки процесса
+        } catch (InterruptedException ex) {
+            Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

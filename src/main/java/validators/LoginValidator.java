@@ -1,6 +1,5 @@
 package validators;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
@@ -27,7 +26,7 @@ public class LoginValidator implements Validator {
        //     value = newValue;
 
             if (newValue.length() < 5) {
-                throw new IllegalArgumentException( bundle.getString("login_length_error"));
+                throw new IllegalArgumentException(bundle.getString("login_length_error"));
             }
 
             if (!Character.isLetter(newValue.charAt(0))) {
@@ -38,11 +37,13 @@ public class LoginValidator implements Validator {
                 throw new IllegalArgumentException(bundle.getString("used_name"));
             }
 
+
         } catch (IllegalArgumentException e) {
             FacesMessage message = new FacesMessage(e.getMessage());
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }
+
     }
 
     private ArrayList<String> getTestArray() {
@@ -51,4 +52,5 @@ public class LoginValidator implements Validator {
         list.add("login");
         return list;
     }
+
 }
