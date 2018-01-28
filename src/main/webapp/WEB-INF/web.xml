@@ -43,14 +43,16 @@
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
 
-    <servlet>
-        <servlet-name>ShowImage</servlet-name>
-        <servlet-class>servlets.ShowImage</servlet-class>
-    </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ShowImage</servlet-name>
-        <url-pattern>/ShowImage</url-pattern>
-    </servlet-mapping>
+    <!-- Аннотирование  выполнено в servlets.ShowImage.java  -->
+    <!--<servlet>-->
+        <!--<servlet-name>ShowImage</servlet-name>-->
+        <!--<servlet-class>servlets.ShowImage</servlet-class>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ShowImage</servlet-name>-->
+        <!--<url-pattern>/ShowImage</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 </web-app>
