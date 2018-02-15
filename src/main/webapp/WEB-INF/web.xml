@@ -32,9 +32,9 @@
 
 
 
-    <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>index.xhtml</welcome-file>-->
+    <!--</welcome-file-list>-->
 
     <resource-ref>
         <res-ref-name>jdbc/Library</res-ref-name>
